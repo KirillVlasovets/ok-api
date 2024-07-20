@@ -17,6 +17,8 @@ public class Counters {
     private Integer presents;
     @SerializedName("moderators")
     private Integer moderators;
+    @SerializedName("members")
+    private Integer members;
     @SerializedName("join_requests")
     private Integer joinRequests;
     @SerializedName("black_list")

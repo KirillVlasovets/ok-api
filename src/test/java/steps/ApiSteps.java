@@ -55,10 +55,24 @@ public class ApiSteps {
         assertEquals(expectedStatusCode, response.statusCode(), "Response code mismatch.");
     }
 
-    public void assertThemesCountEqualsExpected(HttpResponse<String> response, Integer expectedValue) {
-        Gson gson = new Gson();
-        OkResponse okResponse = gson.fromJson(response.body(), OkResponse.class);
-        assertEquals(okResponse.getCounters().getThemes(), expectedValue, "Themes count mismatch.");
+    public void assertThemesAmountEqualsExpected(HttpResponse<String> response, Integer expectedValue) {
+        OkResponse okResponse = new Gson().fromJson(response.body(), OkResponse.class);
+        assertEquals(okResponse.getCounters().getThemes(), expectedValue, "Themes amount mismatch.");
+    }
+
+    public void assertPhotosAmountEqualsExpected(HttpResponse<String> response, Integer expectedValue) {
+        OkResponse okResponse = new Gson().fromJson(response.body(), OkResponse.class);
+        assertEquals(okResponse.getCounters().getPhotos(), expectedValue, "Photos amount mismatch.");
+    }
+
+    public void assertMembersAmountEqualsExpected(HttpResponse<String> response, Integer expectedValue) {
+        OkResponse okResponse = new Gson().fromJson(response.body(), OkResponse.class);
+        assertEquals(okResponse.getCounters().getMembers(), expectedValue, "Members amount mismatch.");
+    }
+
+    public void assertPhotoPresentsAmountEqualsExpected(HttpResponse<String> response, Integer expectedValue) {
+        OkResponse okResponse = new Gson().fromJson(response.body(), OkResponse.class);
+        assertEquals(okResponse.getCounters().getPresents(), expectedValue, "Presents amount mismatch.");
     }
 
     private String generateSignature(String counter) throws UnsupportedEncodingException, NoSuchAlgorithmException {
